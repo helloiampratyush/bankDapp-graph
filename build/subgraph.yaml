@@ -1,0 +1,36 @@
+specVersion: 0.0.5
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: bankdppv2
+    network: sepolia
+    source:
+      address: "0x605F723021E63C09eEf8E90Cc17dfeFB902Cf922"
+      abi: bankdppv2
+      startBlock: 4036025
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - feedBackTime
+        - othersDeposite
+        - selfDeposit
+        - selfWithdraw
+        - transferring
+      abis:
+        - name: bankdppv2
+          file: bankdppv2/abis/bankdppv2.json
+      eventHandlers:
+        - event: feedBackTime(address,string)
+          handler: handlefeedBackTime
+        - event: othersDeposite(address,address,uint256)
+          handler: handleothersDeposite
+        - event: selfDeposit(address,uint256)
+          handler: handleselfDeposit
+        - event: selfWithdraw(address,uint256)
+          handler: handleselfWithdraw
+        - event: transferring(address,address,uint256)
+          handler: handletransferring
+      file: bankdppv2/bankdppv2.wasm

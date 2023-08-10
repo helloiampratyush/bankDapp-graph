@@ -1,0 +1,46 @@
+type feedBackTime @entity(immutable: true) {
+  id: Bytes!
+  provider: Bytes! # address
+  feedback: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type othersDeposite @entity(immutable: true) {
+  id: Bytes!
+  depositor: Bytes! # address
+  depositee: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type selfDeposit @entity(immutable: true) {
+  id: Bytes!
+  depositor: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type selfWithdraw @entity(immutable: true) {
+  id: Bytes!
+  beneficiaries: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type transferring @entity(immutable: true) {
+  id: Bytes!
+  to: Bytes! # address
+  from: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
